@@ -1,0 +1,25 @@
+body{
+    background-image: url(Images/pexels-cottonbro-studio-4088009.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#front{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color: rgba(240, 248, 255, 0.9);
+    height: 100vh;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding-top: 50px;
+}
+#searchButton{
+    margin-top: 10px;
+}
+#resultContainer{
+    padding-top: 20px;
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    list-style-type: none;
+    
+}

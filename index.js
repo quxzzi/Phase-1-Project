@@ -1,25 +1,38 @@
 const url = 'https://binaryjazz.us/wp-json/genrenator/v1/genre/';
-// links API 
+
 function getData(url) {
-  fetch(url)
+  return fetch(url)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-//        data(genre => {
-//            const markup = `<li>${genre.____}</li>`;
-//            document.querySelector('resultContainer').insertAdjacentHTML('beforeend', markup);
-//        }) I Don't know how to get the correct data from the API to put on the page. 
-    })
-};
-// converts HTML to Js objects
-const generateButton = document.getElementById('Generate');
+      return Array.isArray(data) ? data : [data]; // Convert to an array if not already an array
+    });
+}
+
+const searchButton = document.getElementById('searchButton');
 const resultContainer = document.getElementById('resultContainer');
 
-// event listener for button click
-generateButton.addEventListener('click', async () => {
-  try {
-    const data = await getData(url);
-    resultContainer.textContent = data;
-  } catch (e) {
-}
+searchButton.addEventListener('click', () => {
+  getData(url)
+    .then(data => {
+      displayGenres(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
+
+function displayGenres(genres) {
+  resultContainer.innerHTML = '';
+
+  if (genres.length === 0) {
+    const liElement = document.createElement('li');
+    liElement.textContent = 'No genres found.';
+    resultContainer.appendChild(liElement);
+  } else {
+    genres.forEach(genre => {
+      const liElement = document.createElement('li');
+      liElement.textContent = genre;
+      resultContainer.appendChild(liElement);
+    });
+  }
+}
