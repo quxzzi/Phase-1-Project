@@ -17,9 +17,12 @@ body{
     margin-top: 10px;
 }
 #resultContainer{
-    padding-top: 20px;
     font-size: 2em;
     font-family: 'Times New Roman', Times, serif;
+    text-decoration: aliceblue;
     list-style-type: none;
-    
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: rgb(214, 210, 204);
 }

@@ -36,3 +36,22 @@ function displayGenres(genres) {
     });
   }
 }
+resultContainer.addEventListener('mouseover', () => {
+  resultContainer.style.backgroundColor = 'rgb(131, 131, 255)';
+});
+resultContainer.addEventListener('mouseout', () => {
+  resultContainer.style.backgroundColor = '';
+});
+
+resultContainer.addEventListener('click', () => {
+  // Get the content of resultContainer
+  const containerContent = resultContainer.textContent;
+
+  // Converts the Google search URL
+  const searchQuery = encodeURIComponent(containerContent);
+  const googleSearchURL = `https://www.google.com/search?q=${searchQuery}`;
+
+  // Open a new tab with the Google search page
+  window.open(googleSearchURL, '_blank');
+});
+
